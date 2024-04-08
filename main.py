@@ -10,7 +10,7 @@ from flask import Flask, redirect, request, jsonify, session
 load_dotenv()
 
 app = Flask(__name__)
-app.secret_key = 'asdf'
+app.secret_key = os.environ['FLASK_SECRET']
 
 CLIENT_ID = os.environ['CLIENT_ID']
 CLIENT_SECRET = os.environ['CLIENT_SECRET']
@@ -155,7 +155,8 @@ def create_playlist():
     
     
     headers = {
-        'Authorization': f"Bearer {session['access_token']}", 'Content-Type': 'application/json'
+        'Authorization': f"Bearer {session['access_token']}", 
+        'Content-Type': 'application/json'
     }
     
     data = {'name': 'new-playlist', 'public': True}
