@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Recommendations</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Your Recommendations</h1>
+    <ul>
+        {% for track in recommendations %}
+            <li>{{ track.name }} by {% for artist in track.artists %}{{ artist.name }}{% if not loop.last %}, {% endif %}{% endfor %}</li>
+        {% endfor %}
+    </ul>
+    <a href="/create-playlist">Create Playlist</a>
+</body>
+</html>

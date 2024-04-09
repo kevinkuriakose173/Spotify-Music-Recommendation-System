@@ -110,7 +110,6 @@ def get_top():
     
     result += "<br><br>"
     result += "<a href='/recommended'>Get Recommendations</a>"
-    
     return result
 
 @app.route('/recommended')
