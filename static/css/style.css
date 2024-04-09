@@ -1,67 +1,83 @@
 /* Basic reset for margin and padding */
 * {
-    margin: 0;
     padding: 0;
+    margin: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
-    font-family: 'Arial', sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 20px;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: #e3e2df;
+    color: #191414;
+    text-align: center;
 }
 
-header {
-    background: #333;
-    color: #fff;
-    padding-top: 30px;
-    min-height: 70px;
-    border-bottom: #0779e4 solid 3px;
+.mainpage {
+    text-align: center;
 }
 
-header h1 {
-    margin-top: 0;
-    margin-bottom: 15px;
+.top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.top-tracks {
+    margin: 10px;
+}
+
+.top-artists {
+    margin: 10px;
+}
+
+h1 {
+    color: #EE4C7C;
+    text-align: center;
 }
 
 nav ul {
-    background: #555;
+    background: #E3AFBC;
     list-style-type: none;
     padding: 5px;
+    border-radius: 10px;
 }
 
 nav ul a {
-    color: white;
-    text-decoration: none;
-    padding: 5px 15px;
-    display: inline-block;
+    margin: 100px;
 }
 
 ul {
+    display: inline-block;
     list-style-type: none;
-    margin: 20px 0;
+    margin: 20px;
+}
+
+.multicol {
+    columns: 2;
 }
 
 li {
     padding: 10px;
-    background: #f0f0f0;
-    margin-bottom: 5px;
-}
-
-li:hover {
-    background: #e0e0e0;
+    margin: 10px;
+    background: #9a1750;
+    color: #f0f0f0;
+    max-width: 400px;
+    margin: 5px;
+    border-radius: 10px;
 }
 
 a {
-    color: #0779e4;
+    padding: 10px;
+    background-color: #EE4C7C;
+    border-radius: 5px;
+    color: #f0f0f0;
     text-decoration: none;
 }
 
 a:hover {
-    text-decoration: underline;
+    background-color: #b3355b;
 }
 
 /* Add more styles as needed */

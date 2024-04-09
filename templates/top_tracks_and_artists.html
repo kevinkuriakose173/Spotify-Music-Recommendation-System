@@ -3,22 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Top Tracks and Artists</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <h1>Top Tracks</h1>
-    <ul>
-        {% for track in tracks %}
-            <li>{{ track.name }} by {{ track.artists[0].name }}</li>
-        {% endfor %}
-    </ul>
-
-    <h1>Top Artists</h1>
-    <ul>
-        {% for artist in artists %}
-            <li>{{ artist.name }}</li>
-        {% endfor %}
-    </ul>
-    <li><a href="/recommended">Get Recommendations</a></li>
+    <div class="mainpage top">
+        <div class="top-tracks">
+            <h1>Top Tracks</h1>
+            <ul>
+                {% for track in tracks %}
+                    <li>{{ track.name }} by {{ track.artists[0].name }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="top-artists">
+            <h1>Top Artists</h1>
+            <ul>
+                {% for artist in artists %}
+                    <li>{{ artist.name }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <a href="/recommended">Get Recommendations</a>
 </body>
 </html>
