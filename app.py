@@ -7,7 +7,7 @@ load_dotenv()
 
 def create_app():
     app = Flask(__name__)
-    app.secret_key = os.environ.get('SECRET_KEY', 'your_default_secret_key')
+    app.secret_key = os.environ.get('SECRET_KEY')
     
     # Configuration for Spotify API
     app.config['CLIENT_ID'] = os.environ.get('CLIENT_ID')
