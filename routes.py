@@ -80,16 +80,15 @@ def configure_routes(app):
         
         user_profile = spotify.get_user_profile(access_token)
         playlist = spotify.create_playlist(access_token, user_profile['id'], 'My Recommendations Playlist')
-        
         if 'id' in playlist:
             playlist_id = playlist['id']
             track_uris = session['recommendations']
             success = spotify.add_tracks_to_playlist(access_token, playlist_id, track_uris)
             
             if success:
-                return "Playlist successfully created!"
+                return render_template('playlist_created.html', playlist_link = playlist['external_urls']['spotify'])
             else:
-                return "Failed to add tracks to the playlist."
+                return "There was an error "
         return "Failed to create playlist."
 
     @app.route('/refresh-token')

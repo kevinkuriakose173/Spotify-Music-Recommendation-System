@@ -49,7 +49,9 @@ def add_tracks_to_playlist(access_token, playlist_id, track_uris):
     url = f"{API_BASE_URL}playlists/{playlist_id}/tracks"
     data = {'uris': track_uris}
     response = requests.post(url, headers=get_spotify_headers(access_token), json=data)
-    return response.status_code == 200
+    success = response.status_code == 201
+    return success
+
 
 def get_user_profile(access_token):
     url = f"{API_BASE_URL}me"

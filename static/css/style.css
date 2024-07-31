@@ -37,21 +37,12 @@ h1 {
     text-align: center;
 }
 
-nav ul {
-    background: #E3AFBC;
-    list-style-type: none;
-    padding: 5px;
-    border-radius: 10px;
-}
-
-nav ul a {
-    margin: 100px;
-}
 
 ul {
     display: inline-block;
     list-style-type: none;
-    margin: 20px;
+    margin-bottom: 10px;
+    width: 100%;
 }
 
 .multicol {
@@ -60,10 +51,10 @@ ul {
 
 li {
     padding: 10px;
-    margin: 10px;
     background: #9a1750;
     color: #f0f0f0;
-    max-width: 400px;
+    min-width: min-content;
+    max-width: 100%;
     margin: 5px;
     border-radius: 10px;
 }
