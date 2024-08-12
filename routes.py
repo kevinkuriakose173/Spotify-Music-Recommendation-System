@@ -4,14 +4,12 @@ import spotify
 import requests
 import urllib.parse
 
-# Assuming the Spotify related functions like getting top tracks, artists,
-# recommendations, and user profile are in spotify.py
 
 def configure_routes(app):
 
     @app.route('/')
     def index():
-        return render_template('index.html')  # Assuming you have an index.html template
+        return render_template('index.html')  
 
     @app.route('/login')
     def login():
@@ -42,7 +40,7 @@ def configure_routes(app):
 
     @app.route('/main')
     def main():
-        return render_template('main.html')  # Assuming you have a main.html template
+        return render_template('main.html')  
 
     @app.route('/top')
     def get_top():
