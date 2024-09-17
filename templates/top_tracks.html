@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Recommendations</title>
+    <title>Top Tracks</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       rel="stylesheet"
@@ -21,7 +21,7 @@
         background-color: #121212;
       }
 
-      .homepage {
+      .mainpage {
         max-width: 1200px;
         margin: 0 auto;
         padding: 20px;
@@ -75,7 +75,7 @@
         height: 80%;
         margin: auto;
         object-fit: cover;
-        border-radius: 5%;
+        border-radius: 10%;
       }
 
       li h2 {
@@ -117,10 +117,10 @@
     </style>
   </head>
   <body>
-    <div class="homepage">
-      <h1>Recommendations</h1>
+    <div class="mainpage top-tracks-page">
+      <h1>Top Tracks</h1>
       <ul>
-        {% for track in recommendations %}
+        {% for track in tracks %}
         <li>
           <a href="{{ track.external_urls.spotify }}" target="_blank">
             <img
@@ -128,18 +128,13 @@
               alt="{{ track.name }}'s album cover"
             />
             <h2>{{ track.name }}</h2>
-            <p>
-              by {% for artist in track.artists %}{{ artist.name }}{% if not
-              loop.last %}, {% endif %}{% endfor %}
-            </p>
+            <p>by {{ track.artists[0].name }}</p>
           </a>
         </li>
         {% endfor %}
       </ul>
-
       <div class="buttons">
-        <a href="/create-playlist" class="button">Create Playlist</a>
-        <a href="/top-tracks" class="button">Top Tracks</a>
+        <a href="/recommended-tracks" class="button">Recommendations</a>
         <a href="/top-artists" class="button">Top Artists</a>
       </div>
     </div>

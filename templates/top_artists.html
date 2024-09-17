@@ -2,11 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Recommendations</title>
+    <title>Top Artists</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap"
+      rel="stylesheet"
     />
     <link
       rel="icon"
@@ -21,7 +25,7 @@
         background-color: #121212;
       }
 
-      .homepage {
+      .mainpage {
         max-width: 1200px;
         margin: 0 auto;
         padding: 20px;
@@ -44,30 +48,20 @@
 
       li {
         background-color: #535353;
+        padding: 10px;
         width: 100%;
         aspect-ratio: 1 / 1;
-        padding: 10px;
         font-size: 18px;
         color: white;
         text-align: center;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-between;
         transition: background-color 0.3s ease;
       }
 
-      li a {
-        text-decoration: none;
-        color: inherit;
-        display: block;
-        width: 100%;
-        height: 100%;
-        text-align: center;
-      }
-
       li:hover {
-        background-color: #148f3d;
+        background-color: #1db954;
       }
 
       li img {
@@ -75,24 +69,28 @@
         height: 80%;
         margin: auto;
         object-fit: cover;
-        border-radius: 5%;
+        border-radius: 10%;
       }
 
       li h2 {
         margin: auto;
-        font-size: 16px;
+        font-size: 18px;
         color: white;
         word-wrap: break-word;
         text-align: center;
       }
 
-      li p {
-        margin: auto;
-        font-size: 14px;
-        color: white;
+      a {
+        text-decoration: none;
+        font-weight: 600;
       }
 
-      a.button {
+      .buttons {
+        display: flex;
+        justify-content: space-evenly;
+      }
+
+      .buttons a {
         display: inline-block;
         margin-top: 20px;
         margin-bottom: 30px;
@@ -100,47 +98,34 @@
         width: 250px;
         background-color: #121212;
         color: white;
-        text-decoration: none;
         font-size: 18px;
-        font-weight: 600;
         transition: background-color 0.3s ease;
       }
 
-      a.button:hover {
+      .buttons a:hover {
         background-color: #1db954;
-      }
-
-      .buttons {
-        display: flex;
-        justify-content: space-evenly;
       }
     </style>
   </head>
   <body>
-    <div class="homepage">
-      <h1>Recommendations</h1>
+    <div class="mainpage top-artists-page">
+      <h1>Top Artists</h1>
       <ul>
-        {% for track in recommendations %}
-        <li>
-          <a href="{{ track.external_urls.spotify }}" target="_blank">
+        {% for artist in artists %}
+        <a href="{{ artist.external_urls.spotify }}" target="_blank">
+          <li>
             <img
-              src="{{ track.album.images[0].url }}"
-              alt="{{ track.name }}'s album cover"
+              src="{{ artist.images[0].url }}"
+              alt="{{ artist.name }}'s image"
             />
-            <h2>{{ track.name }}</h2>
-            <p>
-              by {% for artist in track.artists %}{{ artist.name }}{% if not
-              loop.last %}, {% endif %}{% endfor %}
-            </p>
-          </a>
-        </li>
+            <h2>{{ artist.name }}</h2>
+          </li>
+        </a>
         {% endfor %}
       </ul>
-
       <div class="buttons">
-        <a href="/create-playlist" class="button">Create Playlist</a>
-        <a href="/top-tracks" class="button">Top Tracks</a>
-        <a href="/top-artists" class="button">Top Artists</a>
+        <a href="/recommended-artists">Recommendations</a>
+        <a href="/top-tracks">Top Tracks</a>
       </div>
     </div>
   </body>

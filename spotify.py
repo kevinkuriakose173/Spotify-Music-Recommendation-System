@@ -25,17 +25,22 @@ def get_spotify_headers(access_token):
     return {'Authorization': f'Bearer {access_token}'}
 
 def get_top_tracks(access_token):
-    url = f'{API_BASE_URL}me/top/tracks?limit=10&time_range=long_term'
+    url = f'{API_BASE_URL}me/top/tracks?limit=50&time_range=long_term'
     response = requests.get(url, headers=get_spotify_headers(access_token))
     return response.json()['items']
 
 def get_top_artists(access_token):
-    url = f'{API_BASE_URL}me/top/artists?limit=10&time_range=long_term'
+    url = f'{API_BASE_URL}me/top/artists?limit=50&time_range=long_term'
     response = requests.get(url, headers=get_spotify_headers(access_token))
     return response.json()['items']
 
-def get_recommendations(access_token, seed_artists):
+def get_recommendations_artists(access_token, seed_artists):
     url = f"{API_BASE_URL}recommendations?limit=50&seed_artists={','.join(seed_artists)}"
+    response = requests.get(url, headers=get_spotify_headers(access_token))
+    return response.json()['tracks']
+
+def get_recommendations_tracks(access_token, seed_tracks):
+    url = f"{API_BASE_URL}recommendations?limit=50&seed_tracks={','.join(seed_tracks)}"
     response = requests.get(url, headers=get_spotify_headers(access_token))
     return response.json()['tracks']
 

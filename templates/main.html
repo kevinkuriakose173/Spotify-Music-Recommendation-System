@@ -1,15 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Main Dashboard</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
-    <div class="mainpage">
-        <h1>Main Dashboard</h1>
-        <a href="/top">View Top Tracks and Artists</a>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='images/favicon.ico') }}"
+      type="image/x-icon"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Montserrat", sans-serif;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+      }
+
+      .container {
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        padding: 0 10%;
+      }
+
+      a {
+        font-weight: bold;
+        font-size: 48px;
+        text-decoration: none;
+        padding: 15px 30px;
+        color: white;
+        transition: background-color 0.4s ease, color 0.4s ease;
+      }
+
+      a:hover {
+        background-color: #1db954;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <a href="/top-artists">Top Artists</a>
+      <a href="/top-tracks">Top Tracks</a>
     </div>
-</body>
+  </body>
 </html>

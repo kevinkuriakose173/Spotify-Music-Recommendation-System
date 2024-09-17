@@ -9,13 +9,13 @@
 body {
     line-height: 1.6;
     margin: 0;
-    padding: 20px;
-    background-color: #e3e2df;
+    background-color: #121212;
     color: #191414;
     text-align: center;
 }
 
 .mainpage {
+    align-items: center;
     text-align: center;
 }
 
@@ -33,7 +33,7 @@ body {
 }
 
 h1 {
-    color: #EE4C7C;
+    color: 	#b3b3b3;
     text-align: center;
 }
 
@@ -51,24 +51,13 @@ ul {
 
 li {
     padding: 10px;
-    background: #9a1750;
+    background: #1db954;
     color: #f0f0f0;
     min-width: min-content;
     max-width: 100%;
     margin: 5px;
-    border-radius: 10px;
+    border-radius: 2%;
 }
 
-a {
-    padding: 10px;
-    background-color: #EE4C7C;
-    border-radius: 5px;
-    color: #f0f0f0;
-    text-decoration: none;
-}
-
-a:hover {
-    background-color: #b3355b;
-}
 
 /* Add more styles as needed */

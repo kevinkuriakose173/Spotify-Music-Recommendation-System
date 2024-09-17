@@ -42,28 +42,60 @@ def configure_routes(app):
     def main():
         return render_template('main.html')  
 
-    @app.route('/top')
-    def get_top():
+    @app.route('/top-artists')
+    def get_top_artists():
+        access_token = session.get('access_token')
+        if not access_token:
+            return redirect('/login')
+        
+        top_artists = spotify.get_top_artists(access_token)
+        
+        session['top_artists'] = top_artists
+        
+        return render_template('top_artists.html', artists=top_artists)
+    
+    @app.route('/top-tracks')
+    def get_top_tracks():
         access_token = session.get('access_token')
         if not access_token:
             return redirect('/login')
         
         top_tracks = spotify.get_top_tracks(access_token)
-        top_artists = spotify.get_top_artists(access_token)
+        print(top_tracks)
+        session['seed_tracks'] = [track['id'] for track in top_tracks[:5]]
         
-        session['top_artists'] = top_artists
-        
-        return render_template('top_tracks_and_artists.html', tracks=top_tracks, artists=top_artists)
+        return render_template('top_tracks.html', tracks=top_tracks)
 
-    @app.route('/recommended')
-    def get_recommended():
+    @app.route('/recommended-tracks')
+    def get_recommended_tracks():
+        access_token = session.get('access_token')
+        if not access_token:
+            return redirect('/login')
+        
+        seed_tracks = session['seed_tracks']
+        if not seed_tracks:
+            return redirect('/top-tracks')
+        
+        recommendations = spotify.get_recommendations_tracks(access_token, seed_tracks)
+        
+        session['recommendations'] = [track['uri'] for track in recommendations]
+        
+        
+        return render_template('recommendations.html', recommendations=recommendations)
+    
+    @app.route('/recommended-artists')
+    def get_recommended_artists():
         access_token = session.get('access_token')
         if not access_token:
             return redirect('/login')
         
         top_artists = session['top_artists']
+        if not top_artists:
+            return redirect('/top-artists')
+        
         seed_artists = [artist['id'] for artist in top_artists[:5]]
-        recommendations = spotify.get_recommendations(access_token, seed_artists)
+
+        recommendations = spotify.get_recommendations_artists(access_token, seed_artists)
         
         session['recommendations'] = [track['uri'] for track in recommendations]
         
