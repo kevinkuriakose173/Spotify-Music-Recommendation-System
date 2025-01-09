@@ -132,5 +132,3 @@ def configure_routes(app):
         session['expires_at'] = datetime.now().timestamp() + token_info['expires_in']
         
         return redirect('/main')
-
-    # Additional routes like '/refresh-token' can be added similarly
